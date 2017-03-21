@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'
-	debug="false">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/' debug="false">
 
 	<!-- 输出日志到控制台 ConsoleAppender -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Threshold" value="DEBUG"></param>
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
+			<param name="ConversionPattern" value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
 		</layout>
 	</appender>
 	<!-- 输出日志到文件 每天产生一个新的文件 -->
 	<appender name="railyFile" class="org.apache.log4j.DailyRollingFileAppender">
 		<param name="threshold" value="${mvn.logLevel}" />
-		<param name="File"
-			value="D:/data/logs/${project.artifactId}/${project.artifactId}.log"></param>
+		<param name="File" value="D:/data/logs/${project.artifactId}/${project.artifactId}.log"></param>
 		<param name="Append" value="true"></param>
 		<param name="bufferedIO" value="true" />
 		<param name="datePattern" value="'.'yyy-MM-dd" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
+			<param name="ConversionPattern" value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
 		</layout>
 	</appender>
 
@@ -34,8 +30,7 @@
 		<param name="MaxBackupIndex" value="10"></param>
 		<param name="bufferedIO" value="true" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern"
-				value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
+			<param name="ConversionPattern" value="${project.artifactId} [%d{yyyy-MM-dd HH:mm:ss}] %-5p => %c.%M(%F:%L) - %m%n"></param>
 		</layout>
 	</appender>
 
