@@ -10,6 +10,8 @@
 	<!-- 定义首页 -->
 	<!-- <mvc:view-controller path="/" view-name="redirect:/" /> -->
 
+	<import resource="springmvc-freemarker.xml" />
+
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<ref bean="bufferedImageHttpMessageConverter" />
@@ -53,7 +55,8 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-	<!-- 对静态资源文件的访问 /images/**映射到ResourceHttpRequestHandler进行处理， location指定静态资源的位置.可以是web application根目录下、jar包里面，这样可以把静态资源压缩到jar包中。 
+	<!-- 对静态资源文件的访问 /images/**映射到ResourceHttpRequestHandler进行处理， 
+		location指定静态资源的位置.可以是web application根目录下、jar包里面，这样可以把静态资源压缩到jar包中。 
 		cache-period 可以使得静态资源进行web cache -->
 	<mvc:resources mapping="/images/**" location="/images/" cache-period="31556926" />
 	<mvc:resources mapping="/js/**" location="/js/" cache-period="31556926" />
