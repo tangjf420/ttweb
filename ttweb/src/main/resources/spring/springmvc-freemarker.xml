@@ -12,7 +12,7 @@
 	<bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />
 		<property name="contentType" value="text/html; charset=utf-8" />
-		<property name="requestContextAttribute" value="base" />
+		<property name="requestContextAttribute" value="request" />
 		<property name="cache" value="true" />
 		<property name="suffix" value=".ftl" />
 		<property name="order" value="0" />
@@ -20,11 +20,21 @@
 
 	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<property name="defaultEncoding" value="UTF-8" />
 		<property name="freemarkerSettings">
 			<props>
-				<prop key="defaultEncoding">utf-8</prop>
+				<prop key="template_update_delay">0</prop>
 			</props>
+		</property>
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape" value-ref="fmXmlEscape" />
+				<entry key="html_escape" value-ref="fmHtmlEscape" />
+			</map>
 		</property>
 	</bean>
 
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
+	<bean id="fmHtmlEscape" class="freemarker.template.utility.HtmlEscape" />
 </beans>

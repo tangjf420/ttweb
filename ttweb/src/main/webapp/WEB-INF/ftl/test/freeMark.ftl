@@ -2,7 +2,7 @@
 <#import "../macro/commonMacro.ftl" as common/>
 <html>
 <head>
-	<#include "../common/meta.ftl">
+	<@common.meta />
 	<title>freeMark测试页面</title>
 	<#-- css -->
 	<@cssAndJs.style />
