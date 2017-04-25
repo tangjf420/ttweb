@@ -19,4 +19,9 @@ public class TestController {
 		return "/test/freeMark";
 	}
 
+	@RequestMapping("/error")
+	public String error() {
+		return "/error/error";
+	}
+
 }
