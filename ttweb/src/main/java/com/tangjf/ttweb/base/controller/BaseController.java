@@ -2,7 +2,7 @@ package com.tangjf.ttweb.base.controller;
 
 import org.springframework.ui.Model;
 
-import com.tangjf.ttweb.utils.StringUtil;
+import com.tangjf.ttweb.util.StringUtil;
 
 /**
  * Controller基础类

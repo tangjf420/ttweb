@@ -1,4 +1,4 @@
-package com.tangjf.ttweb.utils;
+package com.tangjf.ttweb.util;
 
 /**
  * 字符串工具类
