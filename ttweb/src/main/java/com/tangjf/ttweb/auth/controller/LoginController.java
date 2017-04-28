@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.tangjf.ttweb.base.controller.BaseController;
 import com.tangjf.ttweb.base.response.BaseResponse;
 
+/**
+ * 
+ * @version 1.0
+ * @author tangjf
+ * @date 2017年4月26日 下午4:50:56
+ */
 @RequestMapping("/auth/login")
 @Controller
 public class LoginController extends BaseController {
