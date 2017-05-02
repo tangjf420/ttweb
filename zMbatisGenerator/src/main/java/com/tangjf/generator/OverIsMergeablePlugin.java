@@ -8,11 +8,11 @@ import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 
 /**
- * ¸²¸ÇÉú³ÉµÄÎÄ¼ş
+ * è¦†ç›–ç”Ÿæˆçš„æ–‡ä»¶
  * 
  * @version 1.0
  * @author tangjf
- * @date 2017Äê5ÔÂ2ÈÕ ÏÂÎç1:13:04
+ * @date 2017å¹´5æœˆ2æ—¥ ä¸‹åˆ1:23:33
  */
 public class OverIsMergeablePlugin extends PluginAdapter {
 
