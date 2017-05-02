@@ -66,26 +66,33 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
 
         context.getCommentGenerator().addRootComment(answer);
 
+//        addResultMapWithoutBLOBsElement(answer);
+//        addResultMapWithBLOBsElement(answer);
+//        addExampleWhereClauseElement(answer);
+//        addMyBatis3UpdateByExampleWhereClauseElement(answer);
+//        addBaseColumnListElement(answer);
+//        addBlobColumnListElement(answer);
+//        addSelectByExampleWithBLOBsElement(answer);
+//        addSelectByExampleWithoutBLOBsElement(answer);
+//        addSelectByPrimaryKeyElement(answer);
+//        addDeleteByPrimaryKeyElement(answer);
+//        addDeleteByExampleElement(answer);
+//        addInsertElement(answer);
+//        addInsertSelectiveElement(answer);
+//        addCountByExampleElement(answer);
+//        addUpdateByExampleSelectiveElement(answer);
+//        addUpdateByExampleWithBLOBsElement(answer);
+//        addUpdateByExampleWithoutBLOBsElement(answer);
+//        addUpdateByPrimaryKeySelectiveElement(answer);
+//        addUpdateByPrimaryKeyWithBLOBsElement(answer);
+//        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+        
         addResultMapWithoutBLOBsElement(answer);
-        addResultMapWithBLOBsElement(answer);
-        addExampleWhereClauseElement(answer);
-        addMyBatis3UpdateByExampleWhereClauseElement(answer);
         addBaseColumnListElement(answer);
-        addBlobColumnListElement(answer);
-        addSelectByExampleWithBLOBsElement(answer);
-        addSelectByExampleWithoutBLOBsElement(answer);
         addSelectByPrimaryKeyElement(answer);
-        addDeleteByPrimaryKeyElement(answer);
-        addDeleteByExampleElement(answer);
-        addInsertElement(answer);
-        addInsertSelectiveElement(answer);
-        addCountByExampleElement(answer);
-        addUpdateByExampleSelectiveElement(answer);
-        addUpdateByExampleWithBLOBsElement(answer);
-        addUpdateByExampleWithoutBLOBsElement(answer);
-        addUpdateByPrimaryKeySelectiveElement(answer);
-        addUpdateByPrimaryKeyWithBLOBsElement(answer);
-        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+//        addInsertElement(answer);
+//        addUpdateByPrimaryKeySelectiveElement(answer);
+//        addDeleteByPrimaryKeyElement(answer);
 
         return answer;
     }
