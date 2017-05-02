@@ -16,15 +16,13 @@ public class GeneratorTest {
 		try {
 			List<String> warnings = new ArrayList<String>();
 			final boolean overwrite = true;
-			File configFile = new File("F:/workspace_git/zMbatisGenerator/src/main/resources/generator.xml");
+			File configFile = new File(GeneratorTest.class.getResource("/generator.xml").getFile());
 			ConfigurationParser cp = new ConfigurationParser(warnings);
 			Configuration configuration = cp.parseConfiguration(configFile);
 			DefaultShellCallback callback = new DefaultShellCallback(overwrite);
 			MyBatisGenerator mybatisGenerator = new MyBatisGenerator(configuration, callback, warnings);
-
 			mybatisGenerator.generate(null);
 			System.out.println(warnings);
-			System.out.println("OK");
 		} catch (InvalidConfigurationException e) {
 			e.printStackTrace();
 			System.out.println(e.getErrors());
@@ -32,4 +30,5 @@ public class GeneratorTest {
 			e.printStackTrace();
 		}
 	}
+
 }

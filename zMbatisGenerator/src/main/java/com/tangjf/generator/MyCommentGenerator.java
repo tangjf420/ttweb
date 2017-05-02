@@ -10,7 +10,6 @@ import org.mybatis.generator.api.dom.java.Field;
 import org.mybatis.generator.api.dom.java.InnerClass;
 import org.mybatis.generator.api.dom.java.InnerEnum;
 import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 
 public class MyCommentGenerator implements CommentGenerator {
@@ -89,12 +88,6 @@ public class MyCommentGenerator implements CommentGenerator {
 
 	@Override
 	public void addRootComment(XmlElement rootElement) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
 		// TODO Auto-generated method stub
 
 	}
