@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangjf.tally.dao.TallyTypeMapper" >
+    <resultMap id="BaseResultMap" type="com.tangjf.tally.dto.TallyType" >
+        <id column="typeId" property="typeId" jdbcType="VARCHAR" />
+        <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+        <result column="icon" property="icon" jdbcType="VARCHAR" />
+        <result column="fundType" property="fundType" jdbcType="VARCHAR" />
+        <result column="ifSys" property="ifSys" jdbcType="VARCHAR" />
+        <result column="memberId" property="memberId" jdbcType="VARCHAR" />
+        <result column="sortNum" property="sortNum" jdbcType="INTEGER" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="creater" property="creater" jdbcType="VARCHAR" />
+        <result column="modifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+        <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+        <result column="ifDel" property="ifDel" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="BaseColumnList" >
+        typeId, nickName, icon, fundType, ifSys, memberId, sortNum, createTime, creater, 
+        modifyTime, modifier, ifDel
+    </sql>
+    
+    <!-- 根据主键获得数据-->
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_type
+        where typeId = #{typeId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过查询条件返回列表数据-->
+    <select id="queryList" resultMap="BaseResultMap" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_type
+        <where >
+            <if test="typeId != null and typeId != ''" >
+                and typeId = #{typeId,jdbcType=VARCHAR}
+            </if>
+            <if test="nickName != null and nickName != ''" >
+                and nickName = #{nickName,jdbcType=VARCHAR}
+            </if>
+            <if test="icon != null and icon != ''" >
+                and icon = #{icon,jdbcType=VARCHAR}
+            </if>
+            <if test="fundType != null and fundType != ''" >
+                and fundType = #{fundType,jdbcType=VARCHAR}
+            </if>
+            <if test="ifSys != null and ifSys != ''" >
+                and ifSys = #{ifSys,jdbcType=VARCHAR}
+            </if>
+            <if test="memberId != null and memberId != ''" >
+                and memberId = #{memberId,jdbcType=VARCHAR}
+            </if>
+            <if test="sortNum != null" >
+                and sortNum = #{sortNum,jdbcType=INTEGER}
+            </if>
+            <if test="createTime != null" >
+                and createTime = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creater != null and creater != ''" >
+                and creater = #{creater,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null" >
+                and modifyTime = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifier != null and modifier != ''" >
+                and modifier = #{modifier,jdbcType=VARCHAR}
+            </if>
+            <if test="ifDel != null and ifDel != ''" >
+                and ifDel = #{ifDel,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    <!-- 插入新数据 -->
+    <insert id="insert" parameterType="com.tangjf.tally.dto.TallyType" >
+        insert into t_tally_type
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="typeId != null" >
+                typeId,
+            </if>
+            <if test="nickName != null" >
+                nickName,
+            </if>
+            <if test="icon != null" >
+                icon,
+            </if>
+            <if test="fundType != null" >
+                fundType,
+            </if>
+            <if test="ifSys != null" >
+                ifSys,
+            </if>
+            <if test="memberId != null" >
+                memberId,
+            </if>
+            <if test="sortNum != null" >
+                sortNum,
+            </if>
+            <if test="createTime != null" >
+                createTime,
+            </if>
+            <if test="creater != null" >
+                creater,
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime,
+            </if>
+            <if test="modifier != null" >
+                modifier,
+            </if>
+            <if test="ifDel != null" >
+                ifDel,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="typeId != null" >
+                #{typeId,jdbcType=VARCHAR},
+            </if>
+            <if test="nickName != null" >
+                #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="fundType != null" >
+                #{fundType,jdbcType=VARCHAR},
+            </if>
+            <if test="ifSys != null" >
+                #{ifSys,jdbcType=VARCHAR},
+            </if>
+            <if test="memberId != null" >
+                #{memberId,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNum != null" >
+                #{sortNum,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <!-- 根据主键更新数据 -->
+    <update id="update" parameterType="com.tangjf.tally.dto.TallyType" >
+        update t_tally_type
+        <set >
+            <if test="nickName != null" >
+                nickName = #{nickName,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null" >
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="fundType != null" >
+                fundType = #{fundType,jdbcType=VARCHAR},
+            </if>
+            <if test="ifSys != null" >
+                ifSys = #{ifSys,jdbcType=VARCHAR},
+            </if>
+            <if test="memberId != null" >
+                memberId = #{memberId,jdbcType=VARCHAR},
+            </if>
+            <if test="sortNum != null" >
+                sortNum = #{sortNum,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                creater = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                ifDel = #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where typeId = #{typeId,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- 根据主键删除数据-->
+    <delete id="delete" parameterType="java.lang.String" >
+        delete from t_tally_type
+        where typeId = #{typeId,jdbcType=VARCHAR}
+    </delete>
+    
+</mapper>

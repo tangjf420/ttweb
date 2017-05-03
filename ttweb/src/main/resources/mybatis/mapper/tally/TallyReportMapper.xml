@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangjf.tally.dao.TallyReportMapper" >
+    <resultMap id="BaseResultMap" type="com.tangjf.tally.dto.TallyReport" >
+        <id column="reportId" property="reportId" jdbcType="VARCHAR" />
+        <result column="reportType" property="reportType" jdbcType="VARCHAR" />
+        <result column="calendarY" property="calendarY" jdbcType="VARCHAR" />
+        <result column="calendarM" property="calendarM" jdbcType="VARCHAR" />
+        <result column="calendarW" property="calendarW" jdbcType="VARCHAR" />
+        <result column="dateStart" property="dateStart" jdbcType="TIMESTAMP" />
+        <result column="dateEnd" property="dateEnd" jdbcType="TIMESTAMP" />
+        <result column="inAmount" property="inAmount" jdbcType="DECIMAL" />
+        <result column="outAmount" property="outAmount" jdbcType="DECIMAL" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="creater" property="creater" jdbcType="VARCHAR" />
+        <result column="modifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+        <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+        <result column="ifDel" property="ifDel" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="BaseColumnList" >
+        reportId, reportType, calendarY, calendarM, calendarW, dateStart, dateEnd, inAmount, 
+        outAmount, createTime, creater, modifyTime, modifier, ifDel
+    </sql>
+    
+    <!-- 根据主键获得数据-->
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_report
+        where reportId = #{reportId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过查询条件返回列表数据-->
+    <select id="queryList" resultMap="BaseResultMap" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_report
+        <where >
+            <if test="reportId != null and reportId != ''" >
+                and reportId = #{reportId,jdbcType=VARCHAR}
+            </if>
+            <if test="reportType != null and reportType != ''" >
+                and reportType = #{reportType,jdbcType=VARCHAR}
+            </if>
+            <if test="calendarY != null and calendarY != ''" >
+                and calendarY = #{calendarY,jdbcType=VARCHAR}
+            </if>
+            <if test="calendarM != null and calendarM != ''" >
+                and calendarM = #{calendarM,jdbcType=VARCHAR}
+            </if>
+            <if test="calendarW != null and calendarW != ''" >
+                and calendarW = #{calendarW,jdbcType=VARCHAR}
+            </if>
+            <if test="dateStart != null" >
+                and dateStart = #{dateStart,jdbcType=TIMESTAMP}
+            </if>
+            <if test="dateEnd != null" >
+                and dateEnd = #{dateEnd,jdbcType=TIMESTAMP}
+            </if>
+            <if test="inAmount != null" >
+                and inAmount = #{inAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="outAmount != null" >
+                and outAmount = #{outAmount,jdbcType=DECIMAL}
+            </if>
+            <if test="createTime != null" >
+                and createTime = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creater != null and creater != ''" >
+                and creater = #{creater,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null" >
+                and modifyTime = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifier != null and modifier != ''" >
+                and modifier = #{modifier,jdbcType=VARCHAR}
+            </if>
+            <if test="ifDel != null and ifDel != ''" >
+                and ifDel = #{ifDel,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    <!-- 插入新数据 -->
+    <insert id="insert" parameterType="com.tangjf.tally.dto.TallyReport" >
+        insert into t_tally_report
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="reportId != null" >
+                reportId,
+            </if>
+            <if test="reportType != null" >
+                reportType,
+            </if>
+            <if test="calendarY != null" >
+                calendarY,
+            </if>
+            <if test="calendarM != null" >
+                calendarM,
+            </if>
+            <if test="calendarW != null" >
+                calendarW,
+            </if>
+            <if test="dateStart != null" >
+                dateStart,
+            </if>
+            <if test="dateEnd != null" >
+                dateEnd,
+            </if>
+            <if test="inAmount != null" >
+                inAmount,
+            </if>
+            <if test="outAmount != null" >
+                outAmount,
+            </if>
+            <if test="createTime != null" >
+                createTime,
+            </if>
+            <if test="creater != null" >
+                creater,
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime,
+            </if>
+            <if test="modifier != null" >
+                modifier,
+            </if>
+            <if test="ifDel != null" >
+                ifDel,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="reportId != null" >
+                #{reportId,jdbcType=VARCHAR},
+            </if>
+            <if test="reportType != null" >
+                #{reportType,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarY != null" >
+                #{calendarY,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarM != null" >
+                #{calendarM,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarW != null" >
+                #{calendarW,jdbcType=VARCHAR},
+            </if>
+            <if test="dateStart != null" >
+                #{dateStart,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateEnd != null" >
+                #{dateEnd,jdbcType=TIMESTAMP},
+            </if>
+            <if test="inAmount != null" >
+                #{inAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="outAmount != null" >
+                #{outAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <!-- 根据主键更新数据 -->
+    <update id="update" parameterType="com.tangjf.tally.dto.TallyReport" >
+        update t_tally_report
+        <set >
+            <if test="reportType != null" >
+                reportType = #{reportType,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarY != null" >
+                calendarY = #{calendarY,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarM != null" >
+                calendarM = #{calendarM,jdbcType=VARCHAR},
+            </if>
+            <if test="calendarW != null" >
+                calendarW = #{calendarW,jdbcType=VARCHAR},
+            </if>
+            <if test="dateStart != null" >
+                dateStart = #{dateStart,jdbcType=TIMESTAMP},
+            </if>
+            <if test="dateEnd != null" >
+                dateEnd = #{dateEnd,jdbcType=TIMESTAMP},
+            </if>
+            <if test="inAmount != null" >
+                inAmount = #{inAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="outAmount != null" >
+                outAmount = #{outAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="createTime != null" >
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                creater = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                ifDel = #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where reportId = #{reportId,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- 根据主键删除数据-->
+    <delete id="delete" parameterType="java.lang.String" >
+        delete from t_tally_report
+        where reportId = #{reportId,jdbcType=VARCHAR}
+    </delete>
+    
+</mapper>

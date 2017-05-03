@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangjf.tally.dao.TallyLogMapper" >
+    <resultMap id="BaseResultMap" type="com.tangjf.tally.dto.TallyLog" >
+        <id column="logId" property="logId" jdbcType="VARCHAR" />
+        <result column="logTime" property="logTime" jdbcType="TIMESTAMP" />
+        <result column="fundType" property="fundType" jdbcType="VARCHAR" />
+        <result column="typeId" property="typeId" jdbcType="VARCHAR" />
+        <result column="amount" property="amount" jdbcType="DECIMAL" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="creater" property="creater" jdbcType="VARCHAR" />
+        <result column="modifyTime" property="modifyTime" jdbcType="TIMESTAMP" />
+        <result column="modifier" property="modifier" jdbcType="VARCHAR" />
+        <result column="ifDel" property="ifDel" jdbcType="VARCHAR" />
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="BaseColumnList" >
+        logId, logTime, fundType, typeId, amount, remark, createTime, creater, modifyTime, 
+        modifier, ifDel
+    </sql>
+    
+    <!-- 根据主键获得数据-->
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_log
+        where logId = #{logId,jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 通过查询条件返回列表数据-->
+    <select id="queryList" resultMap="BaseResultMap" >
+        select 
+        <include refid="BaseColumnList" />
+        from t_tally_log
+        <where >
+            <if test="logId != null and logId != ''" >
+                and logId = #{logId,jdbcType=VARCHAR}
+            </if>
+            <if test="logTime != null" >
+                and logTime = #{logTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="fundType != null and fundType != ''" >
+                and fundType = #{fundType,jdbcType=VARCHAR}
+            </if>
+            <if test="typeId != null and typeId != ''" >
+                and typeId = #{typeId,jdbcType=VARCHAR}
+            </if>
+            <if test="amount != null" >
+                and amount = #{amount,jdbcType=DECIMAL}
+            </if>
+            <if test="remark != null and remark != ''" >
+                and remark = #{remark,jdbcType=VARCHAR}
+            </if>
+            <if test="createTime != null" >
+                and createTime = #{createTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="creater != null and creater != ''" >
+                and creater = #{creater,jdbcType=VARCHAR}
+            </if>
+            <if test="modifyTime != null" >
+                and modifyTime = #{modifyTime,jdbcType=TIMESTAMP}
+            </if>
+            <if test="modifier != null and modifier != ''" >
+                and modifier = #{modifier,jdbcType=VARCHAR}
+            </if>
+            <if test="ifDel != null and ifDel != ''" >
+                and ifDel = #{ifDel,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    
+    <!-- 插入新数据 -->
+    <insert id="insert" parameterType="com.tangjf.tally.dto.TallyLog" >
+        insert into t_tally_log
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="logId != null" >
+                logId,
+            </if>
+            <if test="logTime != null" >
+                logTime,
+            </if>
+            <if test="fundType != null" >
+                fundType,
+            </if>
+            <if test="typeId != null" >
+                typeId,
+            </if>
+            <if test="amount != null" >
+                amount,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="createTime != null" >
+                createTime,
+            </if>
+            <if test="creater != null" >
+                creater,
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime,
+            </if>
+            <if test="modifier != null" >
+                modifier,
+            </if>
+            <if test="ifDel != null" >
+                ifDel,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="logId != null" >
+                #{logId,jdbcType=VARCHAR},
+            </if>
+            <if test="logTime != null" >
+                #{logTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fundType != null" >
+                #{fundType,jdbcType=VARCHAR},
+            </if>
+            <if test="typeId != null" >
+                #{typeId,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null" >
+                #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <!-- 根据主键更新数据 -->
+    <update id="update" parameterType="com.tangjf.tally.dto.TallyLog" >
+        update t_tally_log
+        <set >
+            <if test="logTime != null" >
+                logTime = #{logTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fundType != null" >
+                fundType = #{fundType,jdbcType=VARCHAR},
+            </if>
+            <if test="typeId != null" >
+                typeId = #{typeId,jdbcType=VARCHAR},
+            </if>
+            <if test="amount != null" >
+                amount = #{amount,jdbcType=DECIMAL},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                createTime = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                creater = #{creater,jdbcType=VARCHAR},
+            </if>
+            <if test="modifyTime != null" >
+                modifyTime = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null" >
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+            <if test="ifDel != null" >
+                ifDel = #{ifDel,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where logId = #{logId,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- 根据主键删除数据-->
+    <delete id="delete" parameterType="java.lang.String" >
+        delete from t_tally_log
+        where logId = #{logId,jdbcType=VARCHAR}
+    </delete>
+    
+</mapper>
