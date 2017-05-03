@@ -10,6 +10,11 @@
     <script type="text/javascript" src="${basePath!''}/js/common.js?version=${version}"></script>
 </#macro>
 
+<#-- 引入工具类JS文件 -->
+<#macro utilsJs>
+    <script type="text/javascript" src="${basePath!''}/js/utils.js?version=${version}"></script>
+</#macro>
+
 <#-- 引入自定义JS文件，路径前不要加斜杠 -->
 <#macro importJs jsPath>
     <script type="text/javascript" src="${basePath!''}/${jsPath}?version=${version}"></script>
