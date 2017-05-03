@@ -20,6 +20,7 @@ import static org.mybatis.generator.internal.util.messages.Messages.getString;
 import org.mybatis.generator.api.FullyQualifiedTable;
 import org.mybatis.generator.api.dom.xml.Attribute;
 import org.mybatis.generator.api.dom.xml.Document;
+import org.mybatis.generator.api.dom.xml.TextElement;
 import org.mybatis.generator.api.dom.xml.XmlElement;
 import org.mybatis.generator.codegen.AbstractXmlGenerator;
 import org.mybatis.generator.codegen.XmlConstants;
@@ -32,6 +33,7 @@ import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.DeleteByPrimary
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ExampleWhereClauseElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.InsertSelectiveElementGenerator;
+import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.QueryListBySelectiveElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ResultMapWithBLOBsElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.ResultMapWithoutBLOBsElementGenerator;
 import org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectByExampleWithBLOBsElementGenerator;
@@ -90,9 +92,10 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addResultMapWithoutBLOBsElement(answer);
         addBaseColumnListElement(answer);
         addSelectByPrimaryKeyElement(answer);
-//        addInsertElement(answer);
-//        addUpdateByPrimaryKeySelectiveElement(answer);
-//        addDeleteByPrimaryKeyElement(answer);
+        addQueryListBySelectiveElement(answer);
+        addInsertSelectiveElement(answer);
+        addUpdateByPrimaryKeySelectiveElement(answer);
+        addDeleteByPrimaryKeyElement(answer);
 
         return answer;
     }
@@ -132,6 +135,8 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     protected void addBaseColumnListElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateBaseColumnList()) {
             AbstractXmlElementGenerator elementGenerator = new BaseColumnListElementGenerator();
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 用于select查询公用抽取的列 -->"));
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -161,6 +166,17 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     protected void addSelectByPrimaryKeyElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateSelectByPrimaryKey()) {
             AbstractXmlElementGenerator elementGenerator = new SelectByPrimaryKeyElementGenerator();
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 根据主键获得数据-->"));
+            initializeAndExecuteGenerator(elementGenerator, parentElement);
+        }
+    }
+    
+    protected void addQueryListBySelectiveElement(XmlElement parentElement) {
+        if (introspectedTable.getRules().generateSelectByPrimaryKey()) {
+            AbstractXmlElementGenerator elementGenerator = new QueryListBySelectiveElementGenerator();
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 通过查询条件返回列表数据-->"));
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -175,6 +191,8 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     protected void addDeleteByPrimaryKeyElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateDeleteByPrimaryKey()) {
             AbstractXmlElementGenerator elementGenerator = new DeleteByPrimaryKeyElementGenerator(false);
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 根据主键删除数据-->"));
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -189,6 +207,8 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
     protected void addInsertSelectiveElement(XmlElement parentElement) {
         if (introspectedTable.getRules().generateInsertSelective()) {
             AbstractXmlElementGenerator elementGenerator = new InsertSelectiveElementGenerator();
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 插入新数据 -->"));
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -226,6 +246,8 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
             XmlElement parentElement) {
         if (introspectedTable.getRules().generateUpdateByPrimaryKeySelective()) {
             AbstractXmlElementGenerator elementGenerator = new UpdateByPrimaryKeySelectiveElementGenerator();
+            // 增加注释
+            parentElement.addElement(new TextElement("<!-- 根据主键更新数据 -->"));
             initializeAndExecuteGenerator(elementGenerator, parentElement);
         }
     }
@@ -255,6 +277,7 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         elementGenerator.setProgressCallback(progressCallback);
         elementGenerator.setWarnings(warnings);
         elementGenerator.addElements(parentElement);
+        parentElement.addElement(new TextElement("")); // 增加一行空白的隔行  
     }
 
     @Override

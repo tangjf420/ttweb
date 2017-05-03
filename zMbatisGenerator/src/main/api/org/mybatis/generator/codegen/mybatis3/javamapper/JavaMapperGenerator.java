@@ -86,24 +86,25 @@ public class JavaMapperGenerator extends AbstractJavaClientGenerator {
         if (stringHasValue(rootInterface)) {
             FullyQualifiedJavaType fqjt = new FullyQualifiedJavaType(
                     rootInterface);
+            fqjt.addTypeArgument(new FullyQualifiedJavaType(introspectedTable.getBaseRecordType()));
             interfaze.addSuperInterface(fqjt);
             interfaze.addImportedType(fqjt);
         }
         
-        addCountByExampleMethod(interfaze);
-        addDeleteByExampleMethod(interfaze);
-        addDeleteByPrimaryKeyMethod(interfaze);
-        addInsertMethod(interfaze);
-        addInsertSelectiveMethod(interfaze);
-        addSelectByExampleWithBLOBsMethod(interfaze);
-        addSelectByExampleWithoutBLOBsMethod(interfaze);
-        addSelectByPrimaryKeyMethod(interfaze);
-        addUpdateByExampleSelectiveMethod(interfaze);
-        addUpdateByExampleWithBLOBsMethod(interfaze);
-        addUpdateByExampleWithoutBLOBsMethod(interfaze);
-        addUpdateByPrimaryKeySelectiveMethod(interfaze);
-        addUpdateByPrimaryKeyWithBLOBsMethod(interfaze);
-        addUpdateByPrimaryKeyWithoutBLOBsMethod(interfaze);
+//        addCountByExampleMethod(interfaze);
+//        addDeleteByExampleMethod(interfaze);
+//        addDeleteByPrimaryKeyMethod(interfaze);
+//        addInsertMethod(interfaze);
+//        addInsertSelectiveMethod(interfaze);
+//        addSelectByExampleWithBLOBsMethod(interfaze);
+//        addSelectByExampleWithoutBLOBsMethod(interfaze);
+//        addSelectByPrimaryKeyMethod(interfaze);
+//        addUpdateByExampleSelectiveMethod(interfaze);
+//        addUpdateByExampleWithBLOBsMethod(interfaze);
+//        addUpdateByExampleWithoutBLOBsMethod(interfaze);
+//        addUpdateByPrimaryKeySelectiveMethod(interfaze);
+//        addUpdateByPrimaryKeyWithBLOBsMethod(interfaze);
+//        addUpdateByPrimaryKeyWithoutBLOBsMethod(interfaze);
 
         List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
         if (context.getPlugins().clientGenerated(interfaze, null,

@@ -34,7 +34,6 @@ public class MyCommentGenerator implements CommentGenerator {
 	@Override
 	public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
