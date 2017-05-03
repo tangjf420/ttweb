@@ -41,7 +41,7 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
-        <!-- 生成实体类的包名和位置，这里配置将生成的实体类放在com.tangjf.domain这个包下 -->
+        <!-- 生成实体类的包名和位置，这里配置将生成的实体类放在com.tangjf.dto这个包下 -->
         <javaModelGenerator targetPackage="${model.package}" targetProject="${target.project}">
             <property name="enableSubPackages" value="true" />
         </javaModelGenerator>
@@ -54,7 +54,7 @@
             type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
             <!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查 -->
-            <property name="rootInterface" value="com.tangjf.base.BaseMapper" />
+            <property name="rootInterface" value="com.tangjf.base.dao.BaseMapper" />
         </javaClientGenerator>
         <!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
         <table tableName="${tableName}" domainObjectName="${domainObjectName}" enableCountByExample="false"
