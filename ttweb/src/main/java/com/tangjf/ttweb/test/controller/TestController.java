@@ -8,20 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/test")
 public class TestController {
 
-	@RequestMapping("/index")
-	public String index() {
-		return "/test/index";
-	}
+    @RequestMapping("/index")
+    public String index() {
+        return "/test/index";
+    }
 
-	@RequestMapping("/freeMark")
-	public String freeMark(Model model) {
-		model.addAttribute("name", "tangjf");
-		return "/test/freeMark";
-	}
+    @RequestMapping("/freeMark")
+    public String freeMark(Model model) {
+        model.addAttribute("name", "tangjf");
+        return "/test/freeMark";
+    }
 
-	@RequestMapping("/error")
-	public String error() {
-		return "/error/error";
-	}
+    @RequestMapping("/error")
+    public String error() {
+        return "/error/error";
+    }
 
 }

@@ -1,5 +1,5 @@
 <html>
 <body>
-	<h2>Test->Index.jsp!</h2>
+    <h2>Test->Index.jsp!</h2>
 </body>
 </html>

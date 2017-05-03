@@ -10,13 +10,13 @@ package com.tangjf.ttweb.enums;
  */
 public enum EnumPermissionRole {
 
-	/** 登录 */
-	LOGIN,
+    /** 登录 */
+    LOGIN,
 
-	/** 前端 */
-	NET,
+    /** 前端 */
+    NET,
 
-	/** 管理后台 */
-	ADMIN;
+    /** 管理后台 */
+    ADMIN;
 
 }

@@ -13,19 +13,19 @@ import com.tangjf.ttweb.util.StringUtil;
  */
 public class BaseController {
 
-	/**
-	 * 返回错误画面
-	 * 
-	 * @param model
-	 * @param msg
-	 *            错误信息
-	 * @return
-	 */
-	protected String resultErrorPage(Model model, String msg) {
-		if (StringUtil.isNotBlank(msg)) {
-			model.addAttribute("msg", msg);
-		}
-		return "error/error";
-	}
+    /**
+     * 返回错误画面
+     * 
+     * @param model
+     * @param msg
+     *            错误信息
+     * @return
+     */
+    protected String resultErrorPage(Model model, String msg) {
+        if (StringUtil.isNotBlank(msg)) {
+            model.addAttribute("msg", msg);
+        }
+        return "error/error";
+    }
 
 }
