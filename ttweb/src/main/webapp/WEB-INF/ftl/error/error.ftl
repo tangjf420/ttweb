@@ -4,8 +4,7 @@
 <head>
 	<@common.meta />
 	<title>登录</title>
-	<@jsCss.css />
-	<@jsCss.js 'login'/>
+	<@jsCss.baseJsAndCss />
 </head>
 <body>
 	<div class="container" id="container">

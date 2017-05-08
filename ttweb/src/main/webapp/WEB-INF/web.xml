@@ -31,4 +31,17 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- 配置错误页 -->
+    <error-page>
+        <error-code>403</error-code>
+        <location><![CDATA[/common/error?code=403&msg=403]]></location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location><![CDATA[/common/error?code=404&msg=404]]></location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location><![CDATA[/common/error?code=500&msg=500]]></location>
+    </error-page>
 </web-app>

@@ -7,7 +7,7 @@
 <#macro baseJsAndCss>
     <link rel="stylesheet" href="${basePath!''}/css/weui.css?version=${version}">
     <script type="text/javascript" src="${basePath!''}/js/jquery-1.8.3.min.js?version=${version}"></script>
-    <script type="text/javascript" src="${basePath!''}/js/common.js?version=${version}"></script>
+    <script type="text/javascript" src="${basePath!''}/js/utils.js?version=${version}"></script>
 </#macro>
 
 <#-- 引入工具类JS文件 -->
