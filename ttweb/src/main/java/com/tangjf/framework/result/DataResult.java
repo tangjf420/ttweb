@@ -1,4 +1,4 @@
-package com.tangjf.ttweb.base.response;
+package com.tangjf.framework.result;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import com.tangjf.framework.result.OperationResult;
  * @date 2017年5月9日 上午11:20:38
  * @param <T>
  */
-public class DataResponse<T> extends OperationResult {
+public class DataResult<T> extends OperationResult {
 
     private static final long serialVersionUID = 2417717238670788184L;
 

@@ -1,4 +1,4 @@
-package com.tangjf.base.dao;
+package com.tangjf.framework.dao;
 
 import java.util.List;
 

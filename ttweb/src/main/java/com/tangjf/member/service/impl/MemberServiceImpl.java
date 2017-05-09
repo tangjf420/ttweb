@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tangjf.base.service.BaseService;
+import com.tangjf.framework.service.BaseService;
 import com.tangjf.member.dao.MemberMapper;
 import com.tangjf.member.dto.Member;
 import com.tangjf.member.service.IMemberService;

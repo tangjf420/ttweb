@@ -12,9 +12,9 @@
 </#macro>
 
 <#macro footer>
-    <div class="weui-footer">
+    <div class="weui-footer weui-footer_fixed-bottom">
         <p class="weui-footer__links">
-            <a href="javascript:void(0);" class="weui-footer__link">底部链接文本</a>
+            <a href="javascript:void(0);" class="weui-footer__link">TT Web</a>
         </p>
         <p class="weui-footer__text">Copyright © 2017 tangjunfeng.xin</p>
     </div>

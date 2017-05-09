@@ -30,4 +30,6 @@
             </div>
         </div>
     </div>
+    <@common.footer />
 </body>
+</html>

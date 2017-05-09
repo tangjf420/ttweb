@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tangjf.framework.result.OperationResult;
 import com.tangjf.member.service.IMemberService;
 import com.tangjf.ttweb.base.controller.BaseController;
-import com.tangjf.ttweb.base.response.BaseResponse;
 
 /**
  * 
@@ -30,9 +30,9 @@ public class LoginController extends BaseController {
 
     @RequestMapping(value = "/doLogin", method = {RequestMethod.POST})
     @ResponseBody
-    public BaseResponse doLogin(String userName, String password) {
+    public OperationResult doLogin(String userName, String password) {
 
-        BaseResponse response = new BaseResponse();
+        OperationResult response = new OperationResult();
         boolean result = this.memberService.login(userName, password);
         if (result) {
             response.setSuccess(true);
