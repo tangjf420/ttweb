@@ -54,7 +54,7 @@
             type="XMLMAPPER">
             <property name="enableSubPackages" value="true" />
             <!-- 可以为所有生成的接口添加一个父接口，但是MBG只负责生成，不负责检查 -->
-            <property name="rootInterface" value="com.tangjf.base.dao.BaseMapper" />
+            <property name="rootInterface" value="com.tangjf.framework.dao.BaseMapper" />
         </javaClientGenerator>
         <!-- 要生成那些表(更改tableName和domainObjectName就可以) -->
         <table tableName="${tableName}" domainObjectName="${domainObjectName}" enableCountByExample="false"
