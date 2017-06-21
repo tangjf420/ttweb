@@ -1,13 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tangjf.dao.UserMapper">
-	<select id="getUser" resultType="com.tangjf.dto.UserDto">
-		select * from user where id = #{id}
-	</select>
-	
-	<select id="getById" resultType="com.tangjf.dto.UserDto">
-		select * from user where id = #{id}
-	</select>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tangjf.dao.UserMapper" >
+    <resultMap id="BaseResultMap" type="com.tangjf.dto.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="test_aaa" property="test_aaa" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="testName" property="testName" jdbcType="CHAR" />
+    </resultMap>
+    
+    <!-- 用于select查询公用抽取的列 -->
+    <sql id="BaseColumnList" >
+        id, name, test_aaa, age, testName
+    </sql>
+    
+    <!-- 根据主键获得数据-->
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="BaseColumnList" />
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    
+    <!-- 通过查询条件返回列表数据-->
+    <select id="queryList" resultMap="BaseResultMap" >
+        select 
+        <include refid="BaseColumnList" />
+        from user
+        <where >
+            <if test="id != null" >
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null and name != ''" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="test_aaa != null and test_aaa != ''" >
+                test_aaa = #{test_aaa,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="testName != null and testName != ''" >
+                testName = #{testName,jdbcType=CHAR},
+            </if>
+        </where>
+    </select>
+    
+    <!-- 插入新数据 -->
+    <insert id="insert" parameterType="com.tangjf.dto.User" >
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="name != null" >
+                name,
+            </if>
+            <if test="test_aaa != null" >
+                test_aaa,
+            </if>
+            <if test="age != null" >
+                age,
+            </if>
+            <if test="testName != null" >
+                testName,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null" >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="test_aaa != null" >
+                #{test_aaa,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="testName != null" >
+                #{testName,jdbcType=CHAR},
+            </if>
+        </trim>
+    </insert>
+    
+    <!-- 根据主键更新数据 -->
+    <update id="update" parameterType="com.tangjf.dto.User" >
+        update user
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="test_aaa != null" >
+                test_aaa = #{test_aaa,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null" >
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="testName != null" >
+                testName = #{testName,jdbcType=CHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <!-- 根据主键删除数据-->
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    
 </mapper>

@@ -1,6 +1,7 @@
 package com.tangjf.dao;
 
-import com.tangjf.dto.UserDto;
+import com.tangjf.base.BaseMapper;
+import com.tangjf.dto.User;
 
-public interface UserMapper extends BaseMapper<UserDto> {
+public interface UserMapper extends BaseMapper<User> {
 }
