@@ -1,5 +1,8 @@
 package com.tangjf.member.service;
 
+import com.tangjf.framework.result.OperationResult;
+import com.tangjf.member.request.LoginRequest;
+
 /**
  * 会员管理接口类
  * 
@@ -9,6 +12,12 @@ package com.tangjf.member.service;
  */
 public interface IMemberService {
 
-    boolean login(String userName, String password);
+    /**
+     * 登录
+     * 
+     * @param request
+     * @return
+     */
+    OperationResult login(LoginRequest request);
 
 }

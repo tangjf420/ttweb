@@ -1,5 +1,6 @@
 <#import "../macro/jsCssMacro.ftl" as cssAndJs/>
 <#import "../macro/commonMacro.ftl" as common/>
+<!DOCTYPE html>
 <html>
 <head>
 	<@common.meta />

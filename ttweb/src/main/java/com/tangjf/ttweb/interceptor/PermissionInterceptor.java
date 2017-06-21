@@ -20,8 +20,9 @@ public class PermissionInterceptor extends HandlerInterceptorAdapter {
     public static final Logger logger = LoggerFactory.getLogger(PermissionInterceptor.class);
 
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        logger.info(request.getServletPath());
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+        throws Exception {
+        logger.info(request.getRequestURI());
         return super.preHandle(request, response, handler);
     }
 

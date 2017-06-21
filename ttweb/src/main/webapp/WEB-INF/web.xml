@@ -16,6 +16,13 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
+    <!-- 用于获取Request -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+
     <!-- 启动Spring MVC -->
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
@@ -28,20 +35,20 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SpringMVC</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/*</url-pattern>
     </servlet-mapping>
 
     <!-- 配置错误页 -->
     <error-page>
         <error-code>403</error-code>
-        <location><![CDATA[/common/error?code=403&msg=403]]></location>
+        <location><![CDATA[/error?code=403&msg=403]]></location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location><![CDATA[/common/error?code=404&msg=404]]></location>
+        <location><![CDATA[/error?code=404&msg=404]]></location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location><![CDATA[/common/error?code=500&msg=500]]></location>
+        <location><![CDATA[/error?code=500&msg=500]]></location>
     </error-page>
 </web-app>

@@ -11,7 +11,9 @@
         <!-- 自动登录 -->
         <mvc:interceptor>
             <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/error" />
             <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/jslib/**" />
             <mvc:exclude-mapping path="/css/**" />
             <mvc:exclude-mapping path="/images/**" />
             <bean id="AutoLoginInterceptor" class="com.tangjf.ttweb.interceptor.AutoLoginInterceptor" />
@@ -22,7 +24,9 @@
         <!-- 判断是否有权限访问 -->
         <mvc:interceptor>
             <mvc:mapping path="/**" />
+            <mvc:exclude-mapping path="/error" />
             <mvc:exclude-mapping path="/js/**" />
+            <mvc:exclude-mapping path="/jslib/**" />
             <mvc:exclude-mapping path="/css/**" />
             <mvc:exclude-mapping path="/images/**" />
             <bean id="PermissionInterceptor" class="com.tangjf.ttweb.interceptor.PermissionInterceptor" />

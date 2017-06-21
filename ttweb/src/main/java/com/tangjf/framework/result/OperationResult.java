@@ -2,6 +2,8 @@ package com.tangjf.framework.result;
 
 import java.io.Serializable;
 
+import com.tangjf.framework.enums.EnumResultCode;
+
 /**
  * 操作结果返回公共对象
  * 
@@ -22,6 +24,66 @@ public class OperationResult implements Serializable {
     /** 错误信息 */
     private String msg;
 
+    public OperationResult() {
+    }
+
+    public OperationResult(
+        boolean success, String code, String msg) {
+        this.success = success;
+        this.code = code;
+        this.msg = msg;
+
+    }
+
+    protected void set(EnumResultCode resultCode) {
+        this.set(EnumResultCode.SUCCESS.equals(resultCode), resultCode.getCode(), resultCode.getMsg());
+    }
+
+    protected void set(boolean success, String code, String msg) {
+        this.success = success;
+        this.code = code;
+        this.msg = msg;
+
+    }
+
+    /**
+     * 成功
+     */
+    public OperationResult success() {
+        this.set(EnumResultCode.SUCCESS);
+        return this;
+    }
+
+    /**
+     * 错误
+     * 
+     * @param resultCode 错误编码枚举类
+     */
+    public OperationResult error(EnumResultCode resultCode) {
+        this.set(resultCode);
+        return this;
+    }
+
+    /**
+     * 错误
+     * 
+     * @param resultCode 错误编码枚举类
+     */
+    public OperationResult error(String msg) {
+        this.set(false, EnumResultCode.ERROR_BUSINESS.getCode(), msg);
+        return this;
+    }
+
+    /**
+     * 异常
+     * 
+     * @return
+     */
+    public OperationResult exception() {
+        this.set(EnumResultCode.ERROR);
+        return this;
+    }
+
     /**
      * 获取 操作结果
      * 
@@ -29,16 +91,6 @@ public class OperationResult implements Serializable {
      */
     public boolean isSuccess() {
         return success;
-    }
-
-    /**
-     * 设定 操作结果
-     * 
-     * @param success
-     *            操作结果
-     */
-    public void setSuccess(boolean success) {
-        this.success = success;
     }
 
     /**
@@ -51,16 +103,6 @@ public class OperationResult implements Serializable {
     }
 
     /**
-     * 设定 code
-     * 
-     * @param code
-     *            code
-     */
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    /**
      * 获取 错误信息
      * 
      * @return 错误信息
@@ -68,15 +110,4 @@ public class OperationResult implements Serializable {
     public String getMsg() {
         return msg;
     }
-
-    /**
-     * 设定 错误信息
-     * 
-     * @param msg
-     *            错误信息
-     */
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
 }

@@ -1,4 +1,4 @@
-package com.tangjf.ttweb.util;
+package com.tangjf.framework.util;
 
 /**
  * 字符串工具类
@@ -10,7 +10,7 @@ package com.tangjf.ttweb.util;
 public class StringUtil {
 
     /** 空字符串"" */
-    public final static String EMPTY_STR = "";
+    public final static String BLANK_STR = "";
 
     /**
      * 判断是否为空串（null,""和" " 都返回 true）
@@ -23,10 +23,8 @@ public class StringUtil {
     }
 
     /**
-     * 判断是否为空字符
+     * 判断是否不为空串
      * 
-     * @Title: isNotBlank
-     * @Description: TODO(这里用一句话描述这个方法的作用)
      * @param str
      * @return
      */

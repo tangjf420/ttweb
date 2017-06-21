@@ -2,7 +2,7 @@ package com.tangjf.framework.result;
 
 import java.util.List;
 
-import com.tangjf.framework.result.OperationResult;
+import com.tangjf.framework.enums.EnumResultCode;
 
 /**
  * JSON请求返回数据结构
@@ -36,8 +36,10 @@ public class DataResult<T> extends OperationResult {
      * 
      * @param data 单个数据
      */
-    public void setData(T data) {
+    public DataResult<T> setData(T data) {
         this.data = data;
+        super.set(EnumResultCode.SUCCESS);
+        return this;
     }
 
     /**
@@ -54,8 +56,10 @@ public class DataResult<T> extends OperationResult {
      * 
      * @param datas 数据集合
      */
-    public void setDatas(List<T> datas) {
+    public DataResult<T> setDatas(List<T> datas) {
         this.datas = datas;
+        super.set(EnumResultCode.SUCCESS);
+        return this;
     }
 
 }

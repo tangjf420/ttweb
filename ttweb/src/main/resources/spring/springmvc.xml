@@ -8,10 +8,7 @@
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
 
     <!-- 定义首页 -->
-    <!-- <mvc:view-controller path="/" view-name="redirect:/" /> -->
-
-    <import resource="springmvc-freemarker.xml" />
-    <import resource="springmvc-interceptor.xml" />
+    <!-- <mvc:view-controller path="/" view-name="/index" /> -->
 
     <mvc:annotation-driven>
         <mvc:message-converters>
@@ -75,7 +72,10 @@
         cache-period 可以使得静态资源进行web cache -->
     <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926" />
     <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926" />
+    <mvc:resources mapping="/jslib/**" location="/jslib/" cache-period="31556926" />
     <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926" />
+    <mvc:resources mapping="favicon.ico" location="favicon.ico" cache-period="31556926" />
 
-    <mvc:default-servlet-handler />
+    <import resource="springmvc-freemarker.xml" />
+    <import resource="springmvc-interceptor.xml" />
 </beans>

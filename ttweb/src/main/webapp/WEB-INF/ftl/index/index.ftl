@@ -1,12 +1,11 @@
 <#import "../macro/jsCssMacro.ftl" as cssAndJs/>
 <#import "../macro/commonMacro.ftl" as common/>
+<!DOCTYPE html>
 <html>
 <head>
 	<@common.meta />
-	<title>freeMark测试页面</title>
-	<#-- css -->
-	<@cssAndJs.style />
-	<@cssAndJs.js />
+	<title>TT WEB</title>
+	<@cssAndJs.baseJsAndCss />
 </head>
 <body>
 <div class="page">
@@ -16,13 +15,13 @@
 
             </div>
             <div class="weui-tabbar">
-                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on" data-linkurl="tallyIndex">
                     <span style="display: inline-block;position: relative;">
                         <img src="../images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
-                        <span class="weui-badge" style="position: absolute;top: -2px;right: -13px;">8</span>
                     </span>
-                    <p class="weui-tabbar__label">微信</p>
+                    <p class="weui-tabbar__label">记账本</p>
                 </a>
+                <!--
                 <a href="javascript:;" class="weui-tabbar__item">
                     <img src="../images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
                     <p class="weui-tabbar__label">通讯录</p>
@@ -34,7 +33,8 @@
                     </span>
                     <p class="weui-tabbar__label">发现</p>
                 </a>
-                <a href="javascript:;" class="weui-tabbar__item">
+                -->
+                <a href="javascript:;" class="weui-tabbar__item" data-linkurl="memberIndex">
                     <img src="../images/icon_tabbar.png" alt="" class="weui-tabbar__icon">
                     <p class="weui-tabbar__label">我</p>
                 </a>
@@ -46,7 +46,7 @@
     $(function(){
         $('.weui-tabbar__item').on('click', function () {
             $(this).addClass('weui-bar__item_on').siblings('.weui-bar__item_on').removeClass('weui-bar__item_on');
-        	$('.weui-tab__panel').load('index');
+        	$('.weui-tab__panel').load($(this).data('linkurl'));
         });
     });
 </script>

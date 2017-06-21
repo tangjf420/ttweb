@@ -13,11 +13,11 @@ import com.tangjf.member.service.IMemberService;
 @ContextConfiguration(locations = "classpath*:/spring/applicationContext.xml")
 public class JUnit4Test extends AbstractJUnit4SpringContextTests {
 
-    @Autowired(required = false)
-    IMemberService memberService;
-
-    @Test
-    public void test() {
-        System.out.println(memberService.login("123", "123"));
-    }
+    // @Autowired(required = false)
+    // IMemberService memberService;
+    //
+    // @Test
+    // public void test() {
+    // System.out.println(memberService.login("123", "123"));
+    // }
 }
