@@ -8,7 +8,7 @@
 	<@cssAndJs.baseJsAndCss />
 </head>
 <body>
-<div class="page">
+<div class="page tabbar js_show">
     <div class="page__bd" style="height: 100%;">
         <div class="weui-tab">
             <div class="weui-tab__panel">

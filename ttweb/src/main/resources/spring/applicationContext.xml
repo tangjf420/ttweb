@@ -17,11 +17,11 @@
 
     <description>Spring公共配置文件</description>
 
-    <!-- 未保障service可以正常注入，需要先注入mybatis -->
+    <!-- 为保障service可以正常注入，需要先注入mybatis -->
     <import resource="spring-mybatis.xml" />
 
-    <!-- 加载本地属性文件 -->
-    <util:properties id="local" location="classpath:local.properties" />
+    <!-- 加载本地属性文件  -->
+    <context:property-placeholder location="classpath:local.properties" />
 
     <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
     <context:component-scan base-package="com.tangjf.*.service.impl">
